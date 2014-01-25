@@ -1,3 +1,7 @@
 *.py[cod]
 *~
 *.db
+blog/bin/
+blog/include/
+blog/lib/
+blog/local/
