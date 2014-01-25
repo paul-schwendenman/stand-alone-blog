@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib import admin
 from django.template.defaultfilters import slugify
 
 # Create your models here.
@@ -16,3 +17,8 @@ class Post(models.Model):
     def __unicode__(self):
         return self.title
 
+class PostAdmin(admin.ModelAdmin):
+    search_fields = ["title"]
+    display_fields = ["title", "created", 'slug']
+
+admin.site.register(Post, PostAdmin)

@@ -1,13 +1,26 @@
 from helpers import render_to_template, render_to_json
+from django.shortcuts import get_object_or_404
+from models import Post
 
 @render_to_json
 #@render_to_template('index.html')
 def index(request):
-    return {'body': 'index'}
+    posts = list(Post.objects.all().values('title', 'body', 'slug'))
+    if not posts:
+        posts = None    
 
-def post(request, post_id):
     return {
-        'body': 'post',
-        'id': post_id,
+        'body': 'index',
+        'posts': posts,
+    }
+
+@render_to_json
+def post(request, post_slug):
+    post = get_object_or_404(Post, slug=post_slug)
+    return {
+        'title': post.title,
+        'body': post.body,
+        'created': str(post.created),
+        'slug': post_slug,
     }
 
