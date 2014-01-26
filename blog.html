@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}
+Dianne's Blog | {{ title }}
+{% endblock %}
+
+{% block content %}
+<h1>{{ title }}</h1>
+<hr />
+<p>
+{{ body|safe }}
+</p>
+<h4>{{ created_date }} {{ created_time }}</h4>
+{% endblock %}
