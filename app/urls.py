@@ -10,5 +10,6 @@ urlpatterns = patterns('app.views',
 
     # Uncomment the next line to enable the admin:
     url(r'^$', 'index'),
-    url(r'^(?P<post_slug>\w+)/$', 'post'),
+    url(r'^new/$', 'new_post'),
+    url(r'^(?P<post_slug>[\w-]+)/$', 'view_post'),
 )
